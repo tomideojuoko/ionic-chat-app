@@ -1,17 +1,37 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>
-      Tab 2
-    </ion-title>
+    <ion-title class="center-title">Messaging System</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <!-- Member name centered -->
+  <div class="member-name">
+    <h2>Paul / Mary</h2>
+  </div>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  <!-- Messages box with a white background and black text -->
+  <ion-card class="message-card">
+    <ion-card-header>
+      <ion-card-title>Messages</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngFor="let message of messages">
+          <div class="message-box">
+            <div class="message-content">{{ message.content }}</div>
+            <small class="message-info">{{ message.timestamp }} - {{ message.memberId }}</small>
+          </div>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Input for Member 1 (black placeholder and text) -->
+  <ion-input [(ngModel)]="messageContent1" placeholder="Type a message for Paul"></ion-input>
+  <ion-button (click)="sendMessage1()">Join Conversation</ion-button>
+
+  <!-- Input for Member 2 (black placeholder and text) -->
+  <ion-input [(ngModel)]="messageContent2" placeholder="Type a message for Mary"></ion-input>
+  <ion-button (click)="sendMessage2()">Join Conversation</ion-button>
 </ion-content>

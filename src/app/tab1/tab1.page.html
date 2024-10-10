@@ -1,17 +1,41 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
+    <ion-title class="center-title">Messaging System</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  
+  <div class="member-name">
+    <h2>Peter</h2>
+  </div>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+
+  <ion-card class="message-card">
+    <ion-card-header>
+      <ion-card-title>Messages</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngFor="let message of messages"> 
+        <div class="message-box">
+          <div class="message-content">{{ message.content }}</div>
+            <small class="message-info">{{ message.timestamp }} - {{ message.memberId }}</small>
+          </div>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  
+  <ion-input [(ngModel)]="messageContent" placeholder="Type a message" class="message-input"></ion-input>
+  <ion-button (click)="sendMessage()">Join Conversation</ion-button>
+
+ 
+  <ion-list>
+    <ion-item *ngFor="let message of messages">
+      <strong>{{ message.memberId }}</strong>
+    </ion-item>
+  </ion-list>
 </ion-content>
+

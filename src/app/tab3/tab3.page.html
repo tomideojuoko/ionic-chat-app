@@ -1,17 +1,41 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>
-      Tab 3
-    </ion-title>
+    <ion-title class="center-title">Messaging System - Tab 3</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Send a Picture</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-button (click)="takePicture()">Take a Picture</ion-button>
+      <img *ngIf="image" [src]="image" />
+    </ion-card-content>
+  </ion-card>
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Share Location</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-button (click)="getCurrentLocation()">Get Location</ion-button>
+      <div *ngIf="location">
+        <p>Latitude: {{ location.latitude }}</p>
+        <p>Longitude: {{ location.longitude }}</p>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Save Message to File</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-input [(ngModel)]="messageContent" placeholder="Type a message"></ion-input>
+      <ion-button (click)="writeFile()">Save Message</ion-button>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
+
